@@ -22,3 +22,5 @@ instructions to run admin panel:
 after run the server use this link for the admin panel http://127.0.0.1:8000/admin/
 username: gourav
 password: gourav
+
+deployment link:-realtrust.onrender.com
