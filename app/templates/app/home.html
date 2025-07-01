@@ -1,0 +1,630 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Real Trust</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{% static 'style.css' %}" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    section {
+      padding: 100px 0;
+    }
+  </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#mainNavbar" data-bs-offset="70">
+
+  <!-- NAVIGATION BAR -->
+   
+  <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-light bg-primary shadow-sm fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="{% static 'images\logo.svg' %}" alt="Logo" height="40">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+{% if messages %}
+  <div class="container mt-4">
+    {% for message in messages %}
+      <div
+        class="alert alert-{{ message.tags }} alert-dismissible fade show d-flex align-items-center"
+        role="alert"
+      >
+        <i class="bi bi-bell-fill me-2"></i>
+        <div>{{ message }}</div>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">AboutUs</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HOME SECTION -->
+  <section id="home" class="bg-light" style="
+      background-image: url('{% static "images\young-couple-examining-blueprints-with-real-estate-agent-while-buying-new-home 1.svg" %}');
+      background-size: 100% 100%;
+      background-position: center;
+      min-height: 70vh;
+      position: relative;
+      padding: 120px 0 ;
+    ">
+    <div class="container" 
+    >
+      <div class="row align-items-center">
+        <!-- Hero Text -->
+        <div class="col-md-6">
+          <h1 class="display-3 fw-bold">Consultation, Design & Marketing</h1>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="col-md-6">
+          <div  class="card border-0 shadow-none"
+    style="
+      background-color: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      border: none;
+    "
+>
+            <div class="card-body">
+              <h5 class="card-title">Get a Free Consultation</h5>
+              <form method="post" novalidate>
+                {% csrf_token %}
+                <div class="mb-3" >
+                  {{ contact_form.full_name.label_tag }}
+                  {{ contact_form.full_name }}
+                </div>
+                <div class="mb-3">
+                  {{ contact_form.email.label_tag }}
+                  {{ contact_form.email }}
+                </div>
+                <div class="mb-3">
+                  {{ contact_form.phone.label_tag }}
+                  {{ contact_form.phone }}
+                </div>
+                <div class="mb-3">
+                  {{ contact_form.city.label_tag }}
+                  {{ contact_form.city }}
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section
+  id="realtor"
+  class="bg-light"
+  style="
+    position: relative;
+    overflow: hidden;
+    padding: 80px 0;
+  "
+>
+  <!-- Decorative shapes -->
+  <div
+    style="
+      position: absolute;
+      top: -50px; left: -80px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(33,150,243,0.1);
+    "
+  ></div>
+  <div
+    style="
+      position: absolute;
+      bottom: -60px; right: -100px;
+      width: 250px; height: 130px;
+      background: rgba(33,150,243,0.1);
+      transform: rotate(-30deg);
+    "
+  ></div>
+
+  <div class="container" style="position: relative; z-index: 1;">
+    <div class="row align-items-center">
+      
+      <!-- Text Column -->
+      <div class="col-md-6">
+        <h2 style="color: #1976D2; font-size: 2.5rem; margin-bottom: .5rem;">
+          Not Your Average Realtor
+        </h2>
+        <p style="font-size: 1.1rem; line-height: 1.6; color: #555;">
+          Real estate is vision, design & marketing. We amplify your property’s  
+          value through creative strategy and expert execution.
+        </p>
+      </div>
+      
+      <!-- Big Circle + Portraits Inside -->
+      <div class="col-md-6 d-flex justify-content-center">
+        <div
+          style="
+            position: relative;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            border: 4px solid #BBDEFB;
+            background: #E3F2FD;
+            overflow: hidden;
+          "
+        >
+          <!-- Top-center portrait -->
+          <img
+            src="{% static 'images\Ellipse 11.svg' %}"
+            alt="Portrait 1"
+            style="
+              position: absolute;
+              top: 10%;
+              left: 50%;
+              transform: translateX(-50%);
+              width: 80px; height: 80px;
+              border-radius: 50%;
+              border: 3px solid #fff;
+              box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+              transition: transform .3s;
+            "
+            onmouseover="this.style.transform='translateX(-50%) scale(1.1)'" 
+            onmouseout="this.style.transform='translateX(-50%) scale(1)'"
+          />
+
+          <!-- Bottom-left portrait -->
+          <img
+            src="{% static 'images\Ellipse 12.svg' %}"
+            alt="Portrait 2"
+            style="
+              position: absolute;
+              bottom: 10%;
+              left: 25%;
+              transform: translateX(-50%);
+              width: 80px; height: 80px;
+              border-radius: 50%;
+              border: 3px solid #fff;
+              box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+              transition: transform .3s;
+            "
+            onmouseover="this.style.transform='translateX(-50%) scale(1.1)'" 
+            onmouseout="this.style.transform='translateX(-50%) scale(1)'"
+          />
+
+          <!-- Bottom-right portrait -->
+          <img
+            src="{% static 'images\Ellipse 13.svg' %}"
+            alt="Portrait 3"
+            style="
+              position: absolute;
+              bottom: 10%;
+              right: 25%;
+              transform: translateX(50%);
+              width: 80px; height: 80px;
+              border-radius: 50%;
+              border: 3px solid #fff;
+              box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+              transition: transform .3s;
+            "
+            onmouseover="this.style.transform='translateX(50%) scale(1.1)'" 
+            onmouseout="this.style.transform='translateX(50%) scale(1)'"
+          />
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- OUR SERVICES SECTION -->
+<section id="services" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-5">Our Services</h2>
+    <div class="row">
+
+      <!-- Service 1: ROI -->
+      <div class="col-12 col-md-4 mb-4">
+        <div style="position: relative; padding-top: 80px; text-align: center;">
+          <!-- Ellipse image on top -->
+          <img
+            src="{% static 'images\home.svg' %}"
+            alt=""
+            style="
+              position: absolute;
+              top: 0;
+              left: 50%;
+              width: 100px;
+              height: 100px;
+              transform: translateX(-50%);
+            "
+          >
+          <!-- One-line description -->
+          <p style="margin-top: 20px; font-weight: 600; font-size: 1.1rem;">
+            Potential ROI
+          </p>
+          <p>we’re committed to helping you get the most out of every rupee you invest. Our solutions are designed not just for performance—but for profitability. With carefully calculated strategies and data-driven insights, we ensure that your investment generates measurable returns. Whether you're a small business or a large enterprise, our focus is on delivering value that pays off.</p>
+        </div>
+      </div>
+
+      <!-- Service 2: Design -->
+      <div class="col-12 col-md-4 mb-4">
+        <div style="position: relative; padding-top: 80px; text-align: center;">
+          <img
+            src="{% static 'images\paintbrush-2.svg' %}"
+            alt=""
+            style="
+              position: absolute;
+              top: 0;
+              left: 50%;
+              width: 100px;
+              height: 100px;
+              transform: translateX(-50%);
+            "
+          >
+          <p style="margin-top: 20px; font-weight: 600; font-size: 1.1rem;">
+            Design Excellence
+          </p>
+          <p>we believe that great homes start with great design. Our team specializes in creating visually stunning and functionally smart housing layouts, 3D floor plans, and elevation designs that inspire confidence in buyers. From branding to brochures and virtual tours, every visual element is crafted to reflect the lifestyle your property promises.</p>
+        </div>
+      </div>
+
+      <!-- Service 3: Marketing -->
+      <div class="col-12 col-md-4 mb-4">
+        <div style="position: relative; padding-top: 80px; text-align: center;">
+          <img
+            src="{% static 'images\circle-dollar-sign.svg' %}"
+            alt=""
+            style="
+              position: absolute;
+              top: 0;
+              left: 50%;
+              width: 100px;
+              height: 100px;
+              transform: translateX(-50%);
+            "
+          >
+          <p style="margin-top: 20px; font-weight: 600; font-size: 1.1rem;">
+           Marketing
+          </p>
+          <p>Design gets you noticed, but marketing gets you sold. Our real estate marketing experts help you connect with the right buyers at the right time. We combine digital strategies with emotional storytelling to generate leads, boost visibility, and turn interest into actual bookings.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ABOUT US SECTION -->
+<section
+  id="about"
+  class="py-5 bg-light"
+  style="
+    position: relative;
+    overflow: hidden;
+    padding: 100px 0;
+    min-height: 600px;
+  "
+>
+  <!-- Random Background Shapes -->
+  <div
+    style="
+      position: absolute;
+      top: -80px;
+      left: 10%;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: #EDF4F4;
+      z-index: 0;
+    "
+  ></div>
+  <div
+    style="
+      position: absolute;
+      top: 180px;
+      left: -120px;
+      width: 300px;
+      height: 160px;
+      border-radius: 50%;
+      background: rgba(33,150,243,0.1);
+      transform: rotate(25deg);
+      z-index: 0;
+    "
+  ></div>
+  <div
+    style="
+      position: absolute;
+      bottom: -60px;
+      right: 15%;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: rgba(33,150,243,0.1);
+      z-index: 0;
+    "
+  ></div>
+  <div
+    style="
+      position: absolute;
+      top: 40%;
+      right: -100px;
+      width: 280px;
+      height: 140px;
+      background: #EDF4F4;
+      transform: rotate(-20deg);
+      z-index: 0;
+    "
+  ></div>
+
+  <div class="container" style="position: relative; z-index: 1;">
+    <!-- Section Title -->
+    <h2
+      style="
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+        color: #000;
+      "
+    >
+      About Us
+    </h2>
+
+    <!-- About Us Paragraphs -->
+    <div
+      style="
+        max-width: 700px;
+        margin: 0 auto 60px;
+        color: #333;
+        line-height: 1.6;
+      "
+    >
+      <p>
+        Founded in 2000, Real Trust is a full-service real estate firm committed to delivering exceptional client experiences across
+        residential, commercial, and investment markets. With deep local knowledge and a passion for integrity, we guide buyers,
+        sellers, and investors through every step of their property journey.
+      </p>
+      <p>
+        At Real Trust, our core values are transparency, expertise, and personalized service. We leverage data-driven market insights,
+        cutting-edge technology, and creative marketing strategies to ensure each client’s goals are not only met but exceeded.
+        From staging and listing to negotiation and closing, our team works tirelessly to maximize value and minimize stress.
+      </p>
+      <p>
+        Whether you’re searching for your first home, expanding your commercial portfolio, or seeking reliable property management,
+        Real Trust stands by you as a trusted partner. Built on long-term relationships and a reputation for excellence, we’re here
+        to turn your real estate ambitions into lasting success.
+      </p>
+    </div>
+
+    <!-- Diagonal Images (no overlap) -->
+    <img
+      src="{% static 'images/pexels-brett-sayles-2881232.svg' %}"
+      alt="Our Team"
+      style="
+        position: absolute;
+        top: 150px;
+        left: 10%;
+        width: 220px;
+        opacity: 0.3;
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(193,231,233,0.1);
+      "
+    >
+    <img
+      src="{% static 'images/pexels-andres-ayrton-6578391.svg' %}"
+      alt="Our Vision"
+      style="
+        position: absolute;
+        top: 300px;
+        left: 40%;
+        width: 240px;
+        opacity: 0.3;
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(193,231,233,0.1);
+      "
+    >
+    <img
+      src="{% static 'images/pexels-fauxels-3182834.svg' %}"
+      alt="Our Values"
+      style="
+        position: absolute;
+        top: 450px;
+        left: 70%;
+        width: 200px;
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(193,231,233,0.1);
+      "
+    >
+  </div>
+</section>
+
+  <!-- OUR PROJECTS SECTION -->
+<section id="projects" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="mb-4 text-center">Our Projects</h2>
+    <div class="row">
+      {% for project in projects %}
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <!-- Use .url or your rendition key if cropping -->
+          <img src="{{ project.image.url }}"
+               class="card-img-top"
+               alt="{{ project.name }}">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{ project.name }}</h5>
+            <p class="card-text flex-grow-1">
+              {{ project.description|truncatewords:20 }}
+            </p>
+            <a href="#"
+               class="btn btn-primary mt-3">Read More</a>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <p class="text-center">No projects to display yet.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- HAPPY CLIENTS SECTION (4-column) -->
+<section id="testimonials" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="mb-5 text-center">Happy Clients</h2>
+    <div class="row">
+      {% for client in clients %}
+      <div class="col-6 col-md-3 mb-4 text-center">
+        <img
+          src="{{ client.image.url }}"
+          alt="{{ client.name }}"
+          class="rounded-circle mb-3"
+          style="width:120px; height:120px; object-fit:cover;"
+        >
+        <p class="fst-italic">“{{ client.description }}”</p>
+        <h5 class="mb-0">{{ client.name }}</h5>
+        <small class="text-muted">{{ client.designation }}</small>
+      </div>
+      {% empty %}
+      <p class="text-center">No testimonials to show.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" style="
+      background-image: url('{% static "images\Rectangle.svg" %}');
+      background-size: 100% 100%;
+      background-position: center;
+      min-height: 70vh;
+      position: relative;
+      padding: 120px 0 ;
+    ">
+    <div class="container text-center">
+      <h2 class="text-white">Contact Us</h2>
+      <p class="text-muted">We're ready to help you grow.</p>
+      <a href="#home" class="btn btn-primary">Back to Top</a>
+    </div>
+  </section>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  {% load static %}
+
+<!-- NEWSLETTER + FOOTER -->
+<section class="bg-primary text-white py-5">
+  <div class="container text-center">
+    <h4>Subscribe Us</h4>
+    <p>Get monthly tips & updates straight to your inbox.</p>
+    <form
+      action="{% url 'subscribe' %}"
+      method="post"
+      class="d-flex justify-content-center"
+      style="max-width:600px; margin:auto;"
+    >
+      {% csrf_token %}
+      <input
+        type="email"
+        name="email"
+        class="form-control me-2"
+        placeholder="Your email address"
+        required
+      >
+      <button type="submit" class="btn btn-light">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<footer class="bg-dark text-light pt-5 pb-3">
+  <div class="container">
+    <div class="row gy-4">
+      <!-- 1. Logo & Tagline -->
+      <div class="col-6 col-md-3">
+        <a href="{% url 'home' %}">
+          <img
+            src="{% static 'images\logo.svg' %}"
+            alt="Logo"
+            style="max-width:140px;"
+          >
+        </a>
+        <p class="small mt-2">Designing since 2000.</p>
+      </div>
+      <!-- 2. Quick Links -->
+      <div class="col-6 col-md-3">
+        <h6>Quick Links</h6>
+        <ul class="list-unstyled small">
+          <li><a href="#home" class="text-light">Home</a></li>
+          <li><a href="#projects" class="text-light">Projects</a></li>
+          <li><a href="#testimonials" class="text-light">Clients</a></li>
+          <li><a href="/privacy-policy" class="text-light">Privacy Policy</a></li>
+          <li><a href="/terms-of-service" class="text-light">Terms of Service</a></li>
+        </ul>
+      </div>
+      <!-- 3. Contact & Hours -->
+      <div class="col-6 col-md-3">
+        <h6>Contact Us</h6>
+        <address class="small">
+          123 Main St, Indore<br>
+          <a href="tel:+911234567890" class="text-light">+91 123 456 7890</a><br>
+          <a href="mailto:hi@yourbrand.com" class="text-light">hi@yourbrand.com</a>
+        </address>
+        <p class="small mt-2"><strong>Hours:</strong><br>Mon–Fri, 9 AM–6 PM</p>
+      </div>
+      <!-- 4. Social Media -->
+      <div class="col-6 col-md-3 text-md-end">
+        <h6>Follow Us</h6>
+        <a href="https://facebook.com" class="text-light me-2">
+          <i class="bi bi-facebook fs-4"></i>
+        </a>
+        <a href="https://twitter.com" class="text-light me-2">
+          <i class="bi bi-twitter fs-4"></i>
+        </a>
+        <a href="https://linkedin.com" class="text-light me-2">
+          <i class="bi bi-linkedin fs-4"></i>
+        </a>
+        <a href="https://instagram.com" class="text-light">
+          <i class="bi bi-instagram fs-4"></i>
+        </a>
+      </div>
+    </div>
+
+    <hr class="border-secondary my-4">
+
+    <!-- Bottom Bar -->
+    <div class="d-flex flex-column flex-md-row justify-content-between small">
+      <div>© {{ now|date:"Y" }} Realtrust. All rights reserved.</div>
+      <div class="mt-2 mt-md-0">
+        <a href="/privacy-policy" class="text-light me-3">Privacy Policy</a>
+        <a href="/terms-of-service" class="text-light">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Required Bootstrap Icons & JS -->
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+  rel="stylesheet"
+/>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
